@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.4.5</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>com.jeff</groupId>
+    <artifactId>blogger</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>blogger</name>
+    <description>blogger</description>
+    <!--  父文件中 pom.xml 修改為 pom 文件類型，以便子模塊之間互相傳遞依賴  -->
+    <packaging>pom</packaging>
+
+    <!-- 子模塊 -->
+    <modules>
+        <module>jeff-starter-cache</module>   <!-- 緩存子模塊 -->
+        <module>jeff-starter-common</module>    <!-- 工具子模塊 -->
+        <module>jeff-starter-core</module>  <!-- 寫業務代碼的子模塊 -->
+        <module>jeff-starter-security</module> <!-- 權限子模塊 -->
+    </modules>
+    <properties>
+        <java.version>8</java.version>
+        <fastjson2.version>2.0.15</fastjson2.version>
+        <commons-fileupload.version>1.4</commons-fileupload.version>
+        <commons-collections.version>3.2.2</commons-collections.version>
+        <mybatis-plus.version>3.3.0</mybatis-plus.version>
+        <mybatis-plus-generator.version>3.3.0</mybatis-plus-generator.version>
+        <velocity.version>2.3</velocity.version>
+        <lombok.version>1.18.4</lombok.version>
+
+    </properties>
+
+    <dependencies>
+
+        <!-- web 依賴 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!-- springboot 測試依賴 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- fastjson 依賴 -->
+        <dependency>
+            <groupId>com.alibaba.fastjson2</groupId>
+            <artifactId>fastjson2</artifactId>
+            <version>${fastjson2.version}</version>
+        </dependency>
+
+
+        <!-- 對文件上傳、下載的依賴 -->
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>${commons-fileupload.version}</version>
+        </dependency>
+
+
+        <!-- 提供了豐富的集合操作 -->
+        <dependency>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+            <version>${commons-collections.version}</version>
+        </dependency>
+
+        <!-- 提供了基本編碼解碼算法，如base64、md5、sha...等等 -->
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+        </dependency>
+
+        <!-- 豐富的工具類，如 StringUtils -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+        <!-- 連接池 -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
+        </dependency>
+
+        <!-- mybatis-plus 依賴引入 -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>${mybatis-plus.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-generator</artifactId>
+            <version>${mybatis-plus-generator.version}</version>
+        </dependency>
+
+
+        <!-- freemarker引擎依賴引入 -->
+        <dependency>
+            <groupId>org.freemarker</groupId>
+            <artifactId>freemarker</artifactId>
+            <version>2.3.28</version>
+        </dependency>
+
+        <!-- velocity引擎依賴引入 -->
+        <dependency>
+            <groupId>org.apache.velocity</groupId>
+            <artifactId>velocity-engine-core</artifactId>
+            <version>${velocity.version}</version>
+        </dependency>
+
+
+        <!-- lombok的依赖 -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+            <version>${lombok.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <excludes>
+                        <exclude>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

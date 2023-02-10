@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<!-- 繼承父項目 -->
+	<parent>
+		<groupId>com.jeff</groupId>
+		<artifactId>blogger</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../pom.xml</relativePath> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.jeff</groupId>
+	<artifactId>jeff-starter-core</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>jeff-starter-core</name>
+	<description>jeff-starter-core</description>
+	<properties>
+		<java.version>1.8</java.version>
+		<druid-spring-boot-starter.version>1.2.15</druid-spring-boot-starter.version>
+
+	</properties>
+
+	<dependencies>
+		<!-- 各個子模塊間的依賴關係 -->
+		<dependency>
+			<groupId>com.jeff</groupId>
+			<artifactId>jeff-starter-security</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>freemarker</artifactId>
+					<groupId>org.freemarker</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<!-- druid 連接池的依賴 -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid-spring-boot-starter</artifactId>
+			<version>${druid-spring-boot-starter.version}</version>
+		</dependency>
+
+		<!-- mysql 驅動依賴 -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
+
+		<!-- jdbc 驅動依賴 -->
+<!--		<dependency>-->
+<!--			<groupId>org.springframework.boot</groupId>-->
+<!--			<artifactId>spring-boot-starter-jdbc</artifactId>-->
+<!--			<version>3.0.2</version>-->
+<!--		</dependency>-->
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+	<profiles>
+		<profile>
+			<id>dev</id>
+			<properties>
+				<profileActive>dev</profileActive>
+			</properties>
+		</profile>
+		<profile>
+			<id>pro</id>
+			<properties>
+				<profileActive>pro</profileActive>
+			</properties>
+		</profile>
+	</profiles>
+
+</project>

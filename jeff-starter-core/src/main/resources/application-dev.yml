@@ -1,0 +1,24 @@
+
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/jeff_blogger?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=GMT%2B8
+    username: root
+    password: UhUazs1caXveDqSuuRE0WJtd5/xT+doDzGvH1mRGu2WQX5aamcfmjxHHnYH2N6k0Ala5tMQHf2xulmWgf/DSKQ==
+    druid:
+      connection-properties: config.decrypt=true;config.decrypt.key=${druid.publickey}
+      filter:
+        config:
+          enabled: true
+
+
+mybatis-plus:
+  mapper-locations: classpath*:/mybatis-mappers/*,classpath*:/security-mybatis-mappers/*
+    #MyBaits 別名包掃描路徑，通過該屬性可以給包中的類註冊別名，註冊后在 Mapper 對應的 XML 文件中可以直接使用類名，而不用使用全限定的類名
+  type-aliases-package: com.jeff.core.entity,com.jeff.security.entity
+    # 數據庫表與實體類的駝峰命名自動轉換
+  configuration:
+      map-underscore-to-camel-case: true
+server:
+  port: 8088
