@@ -1,8 +1,7 @@
 package com.jeff.core.dao;
 
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.jeff.core.entity.User;
-import org.springframework.stereotype.Repository;
+import com.jeff.core.entity.UserEntity;
+import com.jeff.common.base.BaseDao;
 
 /**
  * <p>
@@ -10,10 +9,8 @@ import org.springframework.stereotype.Repository;
  * </p>
  *
  * @author Jeff
- * @since 2023-02-03
+ * @since 2023-02-13
  */
-@Repository
-public interface UserDao extends BaseMapper<User> {
-
+public interface UserDao extends BaseDao<UserEntity> {
 
 }

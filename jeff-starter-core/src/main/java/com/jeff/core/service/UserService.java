@@ -1,6 +1,7 @@
 package com.jeff.core.service;
 
-import com.baomidou.mybatisplus.extension.service.IService;
+import com.jeff.core.entity.UserEntity;
+import com.jeff.common.base.BaseService;
 
 /**
  * <p>
@@ -8,8 +9,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * </p>
  *
  * @author Jeff
- * @since 2023-02-03
+ * @since 2023-02-13
  */
-public interface UserService extends IService {
+public interface UserService extends BaseService<UserEntity> {
 
 }

@@ -20,13 +20,13 @@ import java.util.Scanner;
 public class CodeGenerator {
     /**
      * <p>
-     * 读取控制台内容
+     * 讀取控制台內容
      * </p>
      */
     public static String scanner(String tip) {
         Scanner scanner = new Scanner(System.in);
         StringBuilder help = new StringBuilder();
-        help.append("请输入" + tip + "：");
+        help.append("請輸入" + tip + "：");
         System.out.println(help.toString());
         if (scanner.hasNext()) {
             String ipt = scanner.next();
@@ -34,13 +34,13 @@ public class CodeGenerator {
                 return ipt;
             }
         }
-        throw new MybatisPlusException("请输入正确的" + tip + "！");
+        throw new MybatisPlusException("請輸入正確的" + tip + "！");
     }
 
     public static void main(String[] args) {
         ResourceBundle resource = ResourceBundle.getBundle("myBatisPlus");
         String outPutDir = resource.getString("outputDir");
-        Boolean fileOverride = false;
+        Boolean fileOverride = true;
         if ("true".equals(resource.getString("fileOverride"))) {
             fileOverride = true;
         }
@@ -51,15 +51,15 @@ public class CodeGenerator {
         String setParent = resource.getString("setParent");
         String mapperPath = resource.getString("mapperPath");
 
-        //代码生成器
+        //代碼生成器
         AutoGenerator mpg = new AutoGenerator();
 
         //全局配置
         GlobalConfig gc = new GlobalConfig();
-        //生成的文件输出到哪
+        //生成的文件輸出到哪
         String projectPath = System.getProperty("user.dir");
         gc.setOutputDir(projectPath + outPutDir);
-        //默认主键生成策略为uuid
+        //默認主鍵生成策略為uuid
         // AUTO(0),
         //    NONE(1),
         //    INPUT(2),
@@ -80,12 +80,12 @@ public class CodeGenerator {
         gc.setControllerName("%sController");
         mpg.setGlobalConfig(gc);
         //gc.setIdType(IdType.UUID);
-        //是否开启Swagger2
+        //是否開啟Swagger2
         //gc.setSwagger2(true);
         //gc.setXmlName("%sDaoMapper");
 
 
-        //数据源配置
+        //數據源配置
         DataSourceConfig dsc = new DataSourceConfig();
         dsc.setDbType(DbType.MYSQL);
         dsc.setUrl(url);
@@ -105,7 +105,7 @@ public class CodeGenerator {
         mpg.setPackageInfo(pc);
 
 
-        //自定义配置
+        //自定義配置
         if (StringUtils.isNotEmpty(mapperPath)) {
             InjectionConfig cfg = new InjectionConfig() {
                 @Override
@@ -118,7 +118,7 @@ public class CodeGenerator {
             focList.add(new FileOutConfig("/templates/mapper.xml.ftl") {
                 @Override
                 public String outputFile(TableInfo tableInfo) {
-                    // 自定义输入文件名称
+                    // 自定義輸入文件名稱
                     return projectPath + mapperPath
                             + tableInfo.getMapperName() + "Mapper" + StringPool.DOT_XML;
                 }
@@ -141,7 +141,7 @@ public class CodeGenerator {
 
         //策略配置
         StrategyConfig strategy = new StrategyConfig();
-        //下划线到驼峰的命名方式
+        //下劃線到駝峰的命名方式
         strategy.setNaming(NamingStrategy.underline_to_camel);
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);
         //使用lombok
@@ -149,7 +149,7 @@ public class CodeGenerator {
         strategy.setRestControllerStyle(true);
         strategy.setInclude(scanner("表名"));
         strategy.setControllerMappingHyphenStyle(true);
-        //继承自定义的controller，service，impl，dao
+        //繼承自定義的controller，service，impl，dao
         strategy.setSuperControllerClass("com.jeff.common.base.BaseController");
         strategy.setSuperServiceClass("com.jeff.common.base.BaseService");
         strategy.setSuperServiceImplClass("com.jeff.common.base.BaseServiceImpl");
