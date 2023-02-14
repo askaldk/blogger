@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 //如果不增加 scanBasePackages，在其它模塊的配置類會導致掃描不到
-@SpringBootApplication(scanBasePackages = "com.jeff.core")
+@SpringBootApplication(scanBasePackages = "com.jeff")
 @MapperScan(basePackages = "com.jeff.**.dao")
 public class CoreApplication {
 
